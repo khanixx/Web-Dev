@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Abylaikhan</title>
+    <style>
+        body {
+            background-color: rgb(182, 175, 175);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(174, 255, 198);
+            font-size: 100px;
+        }
+
+        #list1 {
+            text-align: left;
+            font-family: fantasy;
+            border: 15px dashed rgb(234, 43, 43);
+            width: 150px;
+            padding-left: 40px;
+        }
+
+        #list2 {
+            text-align: left;
+            font-family: monospace;
+            border: 15px solid rgb(62, 234, 43);
+            width: 150px;
+            list-style-type: square;
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        .listback{
+            background-color: rgb(255, 255, 255);
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Abylaikhan</h1>
+<img src="images.jpg" alt="Abylaikhan" width="300" height="300">
+<p>I am a potato. I forgot a semicolon. I should have been a farmer.</p>
+<hr>
+<ol id="list1">
+    <li>I am a potato</li>
+    <li>Programmer</li>
+    <li>Java</li>
+</ol>
+
+<ul id="list2">
+    <li>Hobbyhorsing</li>
+    <li>Quadrober</li>
+    <li>Eat foods</li>
+</ul>
+<hr>
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> My profile check</a>
+
+<hr>
+<table>
+    <tr>
+        <th>OOP</th>
+        <th>Web-Dev</th>
+        <th>Network</th>
+    </tr>
+    <tr class="listback">
+        <td>L Tue 10-12 424</td>
+        <td>L Sat 18-20 388</td>
+        <td>L Mon 14-16 367</td>
+    </tr>
+    <tr>
+        <td>P Thu 9-10 365</td>
+        <td>P Thu 18-20 379</td>
+        <td>P Tue 14-16 365</td>
+    </tr>
+</table>
+
+<hr>
+
+<form action="/send-message" method="POST">
+    <div>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+    </div>
+
+    <div>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+    </div>
+
+    <div>
+        <label for="comment">Comments:</label><br>
+        <textarea id="comment" name="comment" rows="5" cols="30" placeholder="your message"></textarea>
+    </div>
+
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
