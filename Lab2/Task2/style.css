@@ -52,6 +52,7 @@ body {
     position: absolute;
     right: 200px;
     height: 800px;
+    z-index: 1;
 }
 
 h1 {
@@ -153,6 +154,7 @@ input {
     color: #737373;
     background-color: #fafafa;
     flex: 0 0 auto;
+    z-index: 2;
 }
 
 .footerlinks {
