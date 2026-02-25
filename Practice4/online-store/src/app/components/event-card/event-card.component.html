@@ -1,0 +1,45 @@
+<div class="card">
+
+  <img [src]="selectedImage" [alt]="event.name" class="main-image" (click)="openGallery()" />
+
+  <div class="thumbnails">
+    @for (img of event.images; track $index) {
+      <img
+        [src]="img"
+        [alt]="event.name"
+        class="thumb"
+        [class.active]="img === selectedImage"
+        (click)="selectImage(img, $index)"
+      />
+    }
+  </div>
+
+  <div class="card-body">
+    <span class="category">{{ event.category }}</span>
+    <h3>{{ event.name }}</h3>
+    <p class="date">📅 {{ event.date }}</p>
+    <p class="description">{{ event.description }}</p>
+    <p class="rating">{{ getStars(event.rating) }} {{ event.rating }}</p>
+    <p class="price">{{ event.price | number }} ₸</p>
+
+    <a [href]="event.link" target="_blank" class="buy-btn">Buy Ticket</a>
+
+    <div class="share-buttons">
+      <button (click)="shareWhatsApp()" class="whatsapp-btn">WhatsApp</button>
+      <button (click)="shareTelegram()" class="telegram-btn">Telegram</button>
+    </div>
+  </div>
+
+</div>
+
+@if (showGallery) {
+  <div class="gallery-overlay" (click)="closeGallery()">
+    <div class="gallery-box" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeGallery()">✕</button>
+      <button class="nav-btn" (click)="prevImage()">‹</button>
+      <img [src]="selectedImage" [alt]="event.name" class="gallery-image" />
+      <button class="nav-btn" (click)="nextImage()">›</button>
+      <p class="counter">{{ currentIndex + 1 }} / {{ event.images.length }}</p>
+    </div>
+  </div>
+}

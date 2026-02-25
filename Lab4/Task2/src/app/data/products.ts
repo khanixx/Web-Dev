@@ -75,7 +75,7 @@ export const products: Product[] = [
     id: 6,
     name: 'MacBook Air 13 M1',
     description: 'Apple’s thinnest, lightest notebook, completely transformed by the Apple M1 chip.',
-    price: 430000,
+    price: 499990,
     rating: 5.0,
     image: 'https://resources.cdn-kaspi.kz/img/m/p/h6f/h69/64010685579294.jpg?format=gallery-medium',
     images: [

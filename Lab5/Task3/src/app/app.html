@@ -1,0 +1,26 @@
+<div class="app-container">
+  <header class="header">
+    <h1>Kaspi Magaz</h1>
+    <div class="category-tabs">
+      @for (category of categories; track category.id) {
+        <button
+          class="category-btn"
+          [class.active]="selectedCategory?.id === category.id"
+          (click)="selectCategory(category)">
+          {{ category.name }}
+        </button>
+      }
+    </div>
+  </header>
+
+  <main class="main-content">
+    @if (!selectedCategory) {
+      <div class="welcome-message">
+        <h2>Welcome to our store!</h2>
+        <p>Please select a category above to view products.</p>
+      </div>
+    } @else {
+      <app-product-list [products]="filteredProducts"></app-product-list>
+    }
+  </main>
+</div>
