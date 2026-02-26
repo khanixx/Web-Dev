@@ -1,0 +1,45 @@
+<div class="app-container">
+  <header class="header">
+    <h1>Kaspi Magaz</h1>
+    <div class="category-tabs">
+      @for (category of categories; track category.id) {
+        <button
+          class="category-btn"
+          [class.active]="selectedCategory?.id === category.id"
+          (click)="selectCategory(category)">
+          {{ category.name }}
+        </button>
+      }
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <div class="favorites-section" style="margin-bottom: 40px; padding: 20px; background: #fffdf5; border: 1px solid #ffd54f; border-radius: 12px;">
+      <h2 style="color: #f39c12; margin-top: 0;">Favorites ({{ favorites.length }})</h2>
+      @if (favorites.length === 0) {
+        <div style="text-align: center; color: #7f8c8d; padding: 20px;">
+          <p>No favorite products yet</p>
+        </div>
+      } @else {
+        <app-product-list
+          [products]="favorites"
+          (toggleFavEvent)="toggleFavorite($event)">
+        </app-product-list>
+      }
+    </div>
+
+    <h2>Products</h2>
+    @if (!selectedCategory) {
+      <div class="welcome-message">
+        <h2>Welcome to our store!</h2>
+        <p>Please select a category above to view products.</p>
+      </div>
+    } @else {
+      <app-product-list
+        [products]="filteredProducts"
+        (toggleFavEvent)="toggleFavorite($event)">
+      </app-product-list>
+    }
+  </main>
+</div>

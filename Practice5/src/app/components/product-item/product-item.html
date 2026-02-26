@@ -1,0 +1,56 @@
+<div class="product-card">
+  <div class="gallery-container">
+    <div class="main-image-wrapper">
+      <img [src]="currentImage" [alt]="product().name" class="main-image">
+    </div>
+
+    <div class="thumbnails">
+      @for (img of product().images; track img) {
+        <img
+          [src]="img"
+          (click)="setGalleryImage(img)"
+          [class.active]="img === currentImage"
+          class="thumb"
+          alt="thumbnail">
+      }
+    </div>
+  </div>
+
+  <div class="product-info">
+    <h3 class="product-title">
+      <a [href]="product().link" target="_blank">{{ product().name }}</a>
+    </h3>
+
+    <div class="rating-row">
+      <span class="stars">
+        @for (star of stars; track $index) { ★ }
+      </span>
+      <span class="rating-number">{{ product().rating }}</span>
+    </div>
+
+    <p class="description">{{ product().description }}</p>
+
+    <div class="price-action-row">
+      <span class="price">{{ product().price | number:'1.0-0' }} ₸</span>
+    </div>
+
+    <div class="actions-row" style="flex-wrap: wrap;">
+
+      <button
+        (click)="onToggleFavorite()"
+        class="fav-btn"
+        [class.active-fav]="product().isFavorite">
+        {{ product().isFavorite ? '★ In Favorites' : '☆ Add to Favorites' }}
+      </button>
+
+      <button (click)="likeProduct()" class="like-btn">
+        ❤️ {{ product().likes }}
+      </button>
+
+      <button (click)="shareProduct()" class="share-btn">
+        ➤ Share
+      </button>
+
+    </div>
+  </div>
+</div>
