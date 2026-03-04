@@ -1,0 +1,24 @@
+<div class="container">
+  <p *ngIf="loading">Loading...</p>
+
+  <div *ngIf="!loading && album">
+    <h1>Album Details</h1>
+    <p><strong>ID:</strong> {{ album.id }}</p>
+    <p><strong>User ID:</strong> {{ album.userId }}</p>
+    <p><strong>Title:</strong> {{ album.title }}</p>
+
+    <hr style="margin: 20px 0;">
+
+    <h2>Edit Title</h2>
+    <input type="text" [(ngModel)]="editTitle" />
+    <button (click)="save()" style="margin-left: 8px; background: #28a745; color: white;">Save</button>
+    <p *ngIf="saved" style="color: green;">Saved successfully!</p>
+
+    <hr style="margin: 20px 0;">
+
+    <a [routerLink]="['/albums', album.id, 'photos']">
+      <button style="background: #007bff; color: white;">View Photos</button>
+    </a>
+    <button (click)="goBack()" style="margin-left: 8px; background: #6c757d; color: white;">Back</button>
+  </div>
+</div>
