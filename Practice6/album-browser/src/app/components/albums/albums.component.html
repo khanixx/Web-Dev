@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Albums</h1>
+
+  <p *ngIf="loading">Loading...</p>
+
+  <div *ngIf="!loading" class="toolbar">
+    <button
+      class="filter-btn"
+      (click)="toggleFilter()"
+      [attr.aria-pressed]="showOnlyFavorites"
+    >
+      {{ showOnlyFavorites ? 'Show all' : 'Show only favorites' }}
+    </button>
+    <span class="fav-badge" [attr.aria-label]="favCount + ' favorites'">
+      ★ {{ favCount }}
+    </span>
+  </div>
+
+  <ul *ngIf="!loading">
+    <li
+      *ngFor="let album of filteredAlbums"
+      class="album-item"
+      (click)="goToAlbum(album.id)"
+    >
+      <button
+        class="star-btn"
+        [class.starred]="isFavorite(album.id)"
+        (click)="toggleFavorite($event, album.id)"
+        [attr.aria-pressed]="isFavorite(album.id)"
+        [attr.aria-label]="(isFavorite(album.id) ? 'Remove from favorites: ' : 'Add to favorites: ') + album.title"
+      >★</button>
+      <span>{{ album.id }}. {{ album.title }}</span>
+      <button class="delete-btn" (click)="deleteAlbum($event, album.id)">Delete</button>
+    </li>
+
+    <li *ngIf="filteredAlbums.length === 0" class="empty-state">
+      <p>You have no favorites yet.</p>
+      <button (click)="toggleFilter()" style="margin-top: 8px;">Back to all albums</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <p *ngIf="loading">Loading...</p>
+
+  <div *ngIf="!loading && album">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <h1>Album Details</h1>
+      <button
+        class="star-btn"
+        [class.starred]="isFavorite"
+        (click)="toggleFavorite()"
+        [attr.aria-pressed]="isFavorite"
+        [attr.aria-label]="(isFavorite ? 'Remove from favorites: ' : 'Add to favorites: ') + album.title"
+      >★</button>
+    </div>
+
+    <p><strong>ID:</strong> {{ album.id }}</p>
+    <p><strong>User ID:</strong> {{ album.userId }}</p>
+    <p><strong>Title:</strong> {{ album.title }}</p>
+    <p><strong>Favorite:</strong> {{ isFavorite ? 'Yes ★' : 'No' }}</p>
+
+    <hr style="margin: 20px 0;">
+
+    <h2>Edit Title</h2>
+    <input type="text" [(ngModel)]="editTitle" />
+    <button (click)="save()" style="margin-left: 8px; background: #28a745; color: white;">Save</button>
+    <p *ngIf="saved" style="color: green;">Saved successfully!</p>
+
+    <hr style="margin: 20px 0;">
+
+    <a [routerLink]="['/albums', album.id, 'photos']">
+      <button style="background: #007bff; color: white;">View Photos</button>
+    </a>
+    <button (click)="goBack()" style="margin-left: 8px; background: #6c757d; color: white;">Back</button>
+  </div>
+</div>
+
+<style>
+  .star-btn {
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #ccc;
+    padding: 0;
+    line-height: 1;
+  }
+  .star-btn:hover { color: #f0c040; }
+  .star-btn.starred { color: #f5a623; }
+</style>
